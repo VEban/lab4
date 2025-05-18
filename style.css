@@ -1,0 +1,231 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header, footer {
+    background-color: #f0f0f0;
+    padding: 1em;
+    text-align: center;
+}
+
+main {
+    padding: 1em;
+}
+
+#comments-section h2, #page-footer h2 {
+    margin-top: 0;
+}
+
+#localstorage-data pre {
+    background-color: #eee;
+    padding: 5px;
+    white-space: pre-wrap; /* для переносу довгих рядків */
+    word-break: break-all; /* для переносу дуже довгих слів без пробілів */
+}
+
+/* Стилі для модального вікна */
+.modal {
+    position: fixed; /* Фіксоване позиціонування */
+    z-index: 1000; /* Поверх інших елементів */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Додати прокрутку, якщо вміст не влазить */
+    background-color: rgba(0, 0, 0, 0.5); /* Напівпрозорий фон */
+    display: flex; /* Для центрування */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px; /* Максимальна ширина */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right; /* Традиційно справа вгорі */
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute; /* Позиціонування відносно .modal-content */
+    top: 10px;
+    right: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#feedback-form div {
+    margin-bottom: 10px;
+}
+
+#feedback-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#feedback-form input[type="text"],
+#feedback-form input[type="email"],
+#feedback-form input[type="tel"],
+#feedback-form textarea {
+    width: calc(100% - 22px); /* Враховуємо padding та border */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#feedback-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#feedback-form button:hover {
+    background-color: #45a049;
+}
+
+
+#theme-toggle-button {
+    position: fixed; /* Фіксована позиція */
+    top: 20px; /* Відступ зверху */
+    right: 20px; /* Відступ справа */
+
+    width: 48px; /* Ширина кнопки (підберіть для вашого тексту) */
+    height: 48px; /* Висота кнопки (має дорівнювати ширині для кола) */
+
+    font-size: 1.4em; /* Розмір іконок-тексту (підберіть, щоб вміщалось) */
+    line-height: 1; /* Для кращого вертикального центрування тексту */
+
+    background-color: #f0f0f0; /* Колір фону для світлої теми */
+    color: #333333; /* Колір тексту для світлої теми */
+    border: 1px solid #cccccc;
+    border-radius: 50%; /* Робить кнопку круглою */
+
+    cursor: pointer;
+    display: flex; /* Використовуємо Flexbox для центрування */
+    align-items: center; /* Вертикальне центрування */
+    justify-content: center; /* Горизонтальне центрування */
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    z-index: 1001; /* Щоб кнопка була поверх інших елементів (крім модалки) */
+
+    white-space: nowrap; /* Забороняє перенос тексту на новий рядок */
+    /* padding: 0; Якщо використовуєте flex для центрування, явний padding може не знадобитися
+                   або може бути мінімальним, якщо потрібен додатковий простір.
+                   З flex, текст центрується в межах width/height. */
+}
+
+/* Ефекти при наведенні та натисканні */
+#theme-toggle-button:hover {
+    background-color: #e0e0e0; /* Світліший фон при наведенні для світлої теми */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#theme-toggle-button:active {
+    transform: scale(0.95); /* Ефект натискання */
+}
+
+#theme-toggle-button:focus {
+    outline: 2px solid #007bff; /* Обводка при фокусі для доступності */
+    outline-offset: 2px;
+}
+
+/* Стилі кнопки для темної теми */
+body.dark-theme #theme-toggle-button {
+    background-color: #444444;
+    color: #f0f0f0;
+    border-color: #555555;
+}
+
+body.dark-theme #theme-toggle-button:hover {
+    background-color: #555555;
+}
+
+body.dark-theme #theme-toggle-button:focus {
+    outline-color: #79b8ff; /* Кращий контраст для темної теми */
+}
+
+/* Денна тема (за замовчуванням) */
+body.light-theme {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+body.light-theme header,
+body.light-theme footer {
+    background-color: #f0f0f0;
+    color: #333333;
+}
+
+body.light-theme #localstorage-data pre {
+    background-color: #eee;
+    color: #333;
+}
+
+body.light-theme .modal-content {
+    background-color: #fefefe;
+    color: #333;
+}
+
+body.light-theme #feedback-form input,
+body.light-theme #feedback-form textarea {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+
+/* Нічна тема */
+body.dark-theme {
+    background-color: #333333;
+    color: #f0f0f0;
+}
+
+body.dark-theme header,
+body.dark-theme footer {
+    background-color: #222222;
+    color: #f0f0f0;
+}
+
+body.dark-theme #localstorage-data pre {
+    background-color: #444;
+    color: #f0f0f0;
+}
+
+body.dark-theme .modal-content {
+    background-color: #444444;
+    color: #f0f0f0;
+}
+
+body.dark-theme #feedback-form input,
+body.dark-theme #feedback-form textarea {
+    background-color: #555;
+    color: #f0f0f0;
+    border: 1px solid #666;
+}
+
+body.dark-theme #feedback-form button {
+    background-color: #5cb85c; /* Трохи світліший зелений для темного фону */
+}
+
+body.dark-theme #feedback-form button:hover {
+    background-color: #4cae4c;
+}

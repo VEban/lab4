@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Лабораторна робота №4 - JavaScript</h1>
+</header>
+
+<main>
+    <section id="comments-section">
+        <h2>Коментарі роботодавців</h2>
+        <div id="comments-container">
+            <!-- Коментарі будуть тут -->
+        </div>
+    </section>
+    <button id="theme-toggle-button" title="Перемкнути тему">🌙/☀️</button>
+</main>
+
+<footer id="page-footer">
+    <h2>Інформація з localStorage:</h2>
+    <div id="localstorage-data">
+        <!-- Дані з localStorage будуть тут -->
+    </div>
+</footer>
+
+<!-- Модальне вікно (спочатку приховане) -->
+<div id="feedback-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close-button">×</span>
+        <h2>Форма зворотнього зв'язку</h2>
+        <form id="feedback-form" action="https://formspree.io/f/xyzwlyyb" method="POST">
+            <div>
+                <label for="name">Ім'я:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="phone">Номер телефону:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div>
+                <label for="message">Повідомлення:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit">Відправити</button>
+        </form>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
